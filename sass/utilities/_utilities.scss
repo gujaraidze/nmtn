@@ -11,33 +11,132 @@ $utilities: (
             "2": $base-padding * 2,
             "3": $base-padding * 4,
             "4": $base-padding * 6,
-            "5": $base-padding * 8
+            "5": $base-padding * 8,
+            "6": $base-padding * 16
             )
         ),
     
         "padding-left": (
-        "prefix": "pl",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8
-            )
-        ),
+            "prefix": "pl",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
 
         "padding-right": (
-        "prefix": "pr",
+            "prefix": "pr",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        "padding-top": (
+            "prefix": "pt",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        "padding-bottom": (
+            "prefix": "pb",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+
+    //margins
+
+    "margin": (
+        "prefix": "m",
         "values": (
             "0": 0,
             "1": $base-padding,
             "2": $base-padding * 2,
             "3": $base-padding * 4,
             "4": $base-padding * 6,
-            "5": $base-padding * 8
+            "5": $base-padding * 8,
+            "6": $base-padding * 16
             )
         ),
+    
+        "margin-left": (
+            "prefix": "ml",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        "margin-right": (
+            "prefix": "mr",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        "margin-top": (
+            "prefix": "mt",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        "margin-bottom": (
+            "prefix": "mb",
+            "values": (
+                "0": 0,
+                "1": $base-padding,
+                "2": $base-padding * 2,
+                "3": $base-padding * 4,
+                "4": $base-padding * 6,
+                "5": $base-padding * 8,
+                "6": $base-padding * 16
+                )
+            ),
+
+        
 
         
 );

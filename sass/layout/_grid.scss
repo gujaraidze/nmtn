@@ -29,7 +29,8 @@ $grid-columns: 12;
 
 @each $key, $val in $grid-gaps {
     .gap-#{$key} > *{
-        padding: $val;
+        padding-left: $val;
+        padding-right: $val;
     } 
 
     .gap-#{$key} {
