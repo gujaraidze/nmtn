@@ -12,41 +12,14 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-heading;
-  font-weight: map.get($font-weights, "regular");
-  line-height: 1.2;
-}
+// h1, h2, h3, h4, h5, h6 {
+//   font-family: $font-heading;
+//   font-weight: map.get($font-weights, "regular");
+//   line-height: 1.2;
+// }
 
-h1 {
-  font-size: map.get($font-sizes, "5xl");
-}
-
-h2 {
-  font-size: map.get($font-sizes, "4xl");
-}
-
-h3 {
-  font-size: map.get($font-sizes, "3xl");
-}
-
-h4 {
-  font-size: map.get($font-sizes, "2xl");
-}
-
-h5 {
-  font-size: map.get($font-sizes, "xl");
-}
-
-h6 {
-  font-size: map.get($font-sizes, "lg");
-}
-
-p {
-  font-size: map.get($font-sizes, "base");
-  line-height: 1.6;
-}
-
-small {
-  font-size: map.get($font-sizes, "sm");
+@each $size, $value in $font-sizes {
+  .fs-#{$size} {
+    font-size: $value;
+  }
 }
