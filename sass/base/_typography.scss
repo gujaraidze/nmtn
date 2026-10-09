@@ -1,0 +1,52 @@
+@use '../abstracts/variables' as *;
+@use 'sass:map';
+
+// @import url("https://fonts.googleapis.com/css2?family=Lustria&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Lustria&family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap");
+
+
+body {
+  font-family: $font-body;
+  font-size: map.get($font-sizes, "base");
+  font-weight: map.get($font-weights, "regular");
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: map.get($font-weights, "regular");
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: map.get($font-sizes, "5xl");
+}
+
+h2 {
+  font-size: map.get($font-sizes, "4xl");
+}
+
+h3 {
+  font-size: map.get($font-sizes, "3xl");
+}
+
+h4 {
+  font-size: map.get($font-sizes, "2xl");
+}
+
+h5 {
+  font-size: map.get($font-sizes, "xl");
+}
+
+h6 {
+  font-size: map.get($font-sizes, "lg");
+}
+
+p {
+  font-size: map.get($font-sizes, "base");
+  line-height: 1.6;
+}
+
+small {
+  font-size: map.get($font-sizes, "sm");
+}

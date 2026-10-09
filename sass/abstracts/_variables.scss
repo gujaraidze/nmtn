@@ -1,0 +1,74 @@
+// colour variables
+$primary: #0B1D26;
+$white: #FFFFFF;
+$accent: #FBD784;
+
+$colors: (
+    "primary": $primary,
+    "white": $white, 
+    "accent": $accent 
+);
+
+
+//spacing 
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+
+//font sizes and weights
+$font-sizes: (
+  "xs": 0.75rem,    // 12px
+  "sm": 0.875rem,   // 14px
+  "base": 1rem,     // 16px
+  "lg": 1.125rem,   // 18px
+  "xl": 1.25rem,    // 20px
+  "2xl": 1.5rem,    // 24px
+  "3xl": 1.875rem,  // 30px
+  "4xl": 2.25rem,   // 36px
+  "5xl": 3rem,      // 48px
+  "6xl": 3.75rem    // 60px
+);
+
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extrabold": 800
+);
+
+$font-body: 'Wix Madefor Text', sans-serif;
+$font-heading: 'Lustria', serif;
+
+
+//brakepoints
+$breakpoints: (
+    "xs": 0,
+    "sm": 480PX,
+    "md": 720PX,
+    "lg": 960PX,
+    "xl": 1200PX,
+    "xxl": 1600PX,
+);
+
+// column number
+$grid-columns: 12;
+
+//gaps
+$grid-gaps: (
+    "0": 0,
+    "1": 10px,
+    "2": 20px,
+    "3": 30px,
+    "4": 40px,
+    "5": 50px
+);
+
+//list of layout values 
+$layout-values: (
+    "start": flex-start, 
+    "end": flex-end, 
+    "center": center, 
+    "between": space-between, 
+    "around": space-around
+);

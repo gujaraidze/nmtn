@@ -1,0 +1,969 @@
+@charset "UTF-8";
+/* Padding and borders should not change an element's declared size. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Browser margin/padding defaults vary wildly across elements and vendors.
+   Start from zero - handle spacing intentionally via the design system. */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevents flex/grid children from overflowing their container.
+   The default min-width: auto on flex and grid children causes overflow bugs
+   that are notoriously confusing to debug. */
+* {
+  min-width: 0;
+}
+
+/* Hidden means hidden: !important is warranted here. */
+[hidden] {
+  display: none !important;
+}
+
+/* Allows CSS transitions to/from intrinsic keyword sizes (auto, min-content, etc.).
+   Only meaningful for users who haven't requested reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+/* Prevent adjustments of font size after orientation changes in iOS. */
+html {
+  -webkit-text-size-adjust: 100%; /* Safari, iOS Safari */
+  text-size-adjust: 100%; /* Chrome, Edge, Firefox Android */
+}
+
+/* Ensures the page occupies at least the full viewport.
+   dvh accounts for mobile browser UI (address bar, navigation)
+   and overrides the vh fallback in browsers that support it. */
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Reserves space for the scrollbar, when the scrollbar is not showing.
+   Prevents flicker when changes on the page cause the scrollbar to toggle. */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Scroll events captured by the scrolling area you're pointing at, by default. */
+html {
+  overscroll-behavior: contain;
+}
+
+/* Antialiased rendering looks better on high-DPI (retina) screens.
+   On lower-DPI displays, subpixel antialiasing (the default) can be
+   sharper, so this is slightly lossy on older monitors.
+   Enable kerning and ligatures at small font-sizes by default. */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+}
+
+/* A unitless line-height avoids inheritance math issues.
+   The smaller default line-height for h-elements avoids excessive
+   line-height when your design system (likely) applies larger fonts.
+   WCAG recommends at least 1.5 for body copy. */
+body {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+}
+
+/* Prevents long URLs or unbreakable strings from blowing out their container. */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* Smarter line-breaking:
+   'pretty' avoids widows (lone words on the last line of a paragraph).
+   'balance' distributes heading text more evenly across lines. 
+   Harmless in browsers that don't support them. */
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* Headings carry semantic meaning, not visual weight.
+   h1–h6 sizing and boldness should come from your design system. */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Inline embedded content has a gap at the bottom caused by baseline alignment.
+   Block display removes it; max-width prevents overflow.
+   height: auto preserves aspect ratio when max-width constrains the width. */
+img, picture, video, canvas, svg, embed, iframe, object, audio {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Exemption for SVG icons (Heroicons/Lucide/Phosphor, etc.) with explicit sizes:
+   these should not be constrained. */
+svg[width][height] {
+  max-width: revert;
+}
+
+/* Strips visual chrome from buttons so they can be styled from scratch. */
+button {
+  background: none;
+  border: none;
+}
+
+/* Form elements use OS-level fonts and ignore font inheritance by default. */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Strips OS-level native styling from interactive elements.
+   Leaves border and background intact, providing accessibility by default.
+   Visual styling should be handled by the design system. */
+input, button, textarea, select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Anything interactive should signal clickability.
+   'button' attribute targets [type="button"], [type="submit"], etc. */
+button,
+[role=button],
+label,
+summary,
+select {
+  cursor: pointer;
+}
+
+/* Inherit color by default so links don't always appear in browser-default blue.
+   Text-decoration is intentionally left as underlined for accessibility. */
+a {
+  color: inherit;
+}
+
+/* Removes bullets/numbers.
+   list markers should be an explicit choice, not a default. */
+ul, ol {
+  list-style: none;
+}
+
+/* Tables default to separated borders with spacing between cells.
+   For any custom table design, you'll want to collapse the borders. */
+table {
+  border-collapse: collapse;
+}
+
+/* Browsers apply bold to <th> elements.
+   Boldness in tables should be controlled by your design system. */
+th {
+  font-weight: inherit;
+}
+
+/* Fieldsets have a surprise border and padding that most UIs don't want. */
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+/* More of a normalization, but these are inconsistently styled in some browsers. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Ensures monospace elements render at the same size as surrounding text. */
+pre, code, kbd, samp {
+  font-family: monospace;
+  font-size: inherit;
+}
+
+/* Browser-generated quotation marks are rarely wanted in a design system. */
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: none;
+}
+
+/* Creates an explicit stacking context on the app root.
+   Prevents z-index bleed from portals, modals, or tooltips
+   from leaking out unexpectedly. */
+#root {
+  isolation: isolate;
+}
+
+body {
+  font-family: "Wix Madefor Text", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.875rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap-0 > * {
+  padding: 0;
+}
+
+.gap-0 {
+  margin-left: -0;
+  margin-right: -0;
+}
+
+.gap-1 > * {
+  padding: 10px;
+}
+
+.gap-1 {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.gap-2 > * {
+  padding: 20px;
+}
+
+.gap-2 {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.gap-3 > * {
+  padding: 30px;
+}
+
+.gap-3 {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.gap-4 > * {
+  padding: 40px;
+}
+
+.gap-4 {
+  margin-left: -40px;
+  margin-right: -40px;
+}
+
+.gap-5 > * {
+  padding: 50px;
+}
+
+.gap-5 {
+  margin-left: -50px;
+  margin-right: -50px;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+@media (min-width: 0) {
+  .col-1-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-xs {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 480PX) {
+  .col-1-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-sm {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 720PX) {
+  .col-1-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-md {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 960PX) {
+  .col-1-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-lg {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 1200PX) {
+  .col-1-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-xl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 1600PX) {
+  .col-1-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 8.3333333333%;
+  }
+  .col-2-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 16.6666666667%;
+  }
+  .col-3-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 25%;
+  }
+  .col-4-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 33.3333333333%;
+  }
+  .col-5-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 41.6666666667%;
+  }
+  .col-6-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 50%;
+  }
+  .col-7-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 58.3333333333%;
+  }
+  .col-8-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 66.6666666667%;
+  }
+  .col-9-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 75%;
+  }
+  .col-10-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 83.3333333333%;
+  }
+  .col-11-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 91.6666666667%;
+  }
+  .col-12-xxl {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: 100%;
+  }
+}
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: 0.75rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.p-4 {
+  padding: 4.5rem;
+}
+
+.p-5 {
+  padding: 6rem;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.pl-1 {
+  padding-left: 0.75rem;
+}
+
+.pl-2 {
+  padding-left: 1.5rem;
+}
+
+.pl-3 {
+  padding-left: 3rem;
+}
+
+.pl-4 {
+  padding-left: 4.5rem;
+}
+
+.pl-5 {
+  padding-left: 6rem;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+
+.pr-1 {
+  padding-right: 0.75rem;
+}
+
+.pr-2 {
+  padding-right: 1.5rem;
+}
+
+.pr-3 {
+  padding-right: 3rem;
+}
+
+.pr-4 {
+  padding-right: 4.5rem;
+}
+
+.pr-5 {
+  padding-right: 6rem;
+}
+
+.text-primary {
+  color: #0B1D26;
+}
+
+.bg-primary {
+  background-color: #0B1D26;
+}
+
+.text-primary-light-1 {
+  color: rgb(13.8823529412%, 20.2352941176%, 23.4117647059%);
+}
+
+.text-primary-dark-1 {
+  color: rgb(4.3094117647%, 11.3611764706%, 14.8870588235%);
+}
+
+.text-primary-light-2 {
+  color: rgb(23.4509803922%, 29.0980392157%, 31.9215686275%);
+}
+
+.text-primary-dark-2 {
+  color: rgb(4.3050980392%, 11.3498039216%, 14.8721568627%);
+}
+
+.text-primary-light-3 {
+  color: rgb(33.0196078431%, 37.9607843137%, 40.431372549%);
+}
+
+.text-primary-dark-3 {
+  color: rgb(4.3007843137%, 11.3384313725%, 14.857254902%);
+}
+
+.text-primary-light-4 {
+  color: rgb(42.5882352941%, 46.8235294118%, 48.9411764706%);
+}
+
+.text-primary-dark-4 {
+  color: rgb(4.2964705882%, 11.3270588235%, 14.8423529412%);
+}
+
+.text-primary-light-5 {
+  color: rgb(52.1568627451%, 55.6862745098%, 57.4509803922%);
+}
+
+.text-primary-dark-5 {
+  color: rgb(4.2921568627%, 11.3156862745%, 14.8274509804%);
+}
+
+.text-primary-light-6 {
+  color: rgb(61.7254901961%, 64.5490196078%, 65.9607843137%);
+}
+
+.text-primary-dark-6 {
+  color: rgb(4.2878431373%, 11.3043137255%, 14.8125490196%);
+}
+
+.text-primary-light-7 {
+  color: rgb(71.2941176471%, 73.4117647059%, 74.4705882353%);
+}
+
+.text-primary-dark-7 {
+  color: rgb(4.2835294118%, 11.2929411765%, 14.7976470588%);
+}
+
+.text-primary-light-8 {
+  color: rgb(80.862745098%, 82.2745098039%, 82.9803921569%);
+}
+
+.text-primary-dark-8 {
+  color: rgb(4.2792156863%, 11.2815686275%, 14.782745098%);
+}
+
+.text-primary-light-9 {
+  color: rgb(90.431372549%, 91.137254902%, 91.4901960784%);
+}
+
+.text-primary-dark-9 {
+  color: rgb(4.2749019608%, 11.2701960784%, 14.7678431373%);
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.bg-white {
+  background-color: #FFFFFF;
+}
+
+.text-accent {
+  color: #FBD784;
+}
+
+.bg-accent {
+  background-color: #FBD784;
+}
+
+.text-accent-light-1 {
+  color: rgb(98.5882352941%, 85.8823529412%, 56.5882352941%);
+}
+
+.text-accent-dark-1 {
+  color: rgb(98.3329411765%, 84.2294117647%, 51.7129411765%);
+}
+
+.text-accent-light-2 {
+  color: rgb(98.7450980392%, 87.4509803922%, 61.4117647059%);
+}
+
+.text-accent-dark-2 {
+  color: rgb(98.2345098039%, 84.1450980392%, 51.6611764706%);
+}
+
+.text-accent-light-3 {
+  color: rgb(98.9019607843%, 89.0196078431%, 66.2352941176%);
+}
+
+.text-accent-dark-3 {
+  color: rgb(98.1360784314%, 84.0607843137%, 51.6094117647%);
+}
+
+.text-accent-light-4 {
+  color: rgb(99.0588235294%, 90.5882352941%, 71.0588235294%);
+}
+
+.text-accent-dark-4 {
+  color: rgb(98.0376470588%, 83.9764705882%, 51.5576470588%);
+}
+
+.text-accent-light-5 {
+  color: rgb(99.2156862745%, 92.1568627451%, 75.8823529412%);
+}
+
+.text-accent-dark-5 {
+  color: rgb(97.9392156863%, 83.8921568627%, 51.5058823529%);
+}
+
+.text-accent-light-6 {
+  color: rgb(99.3725490196%, 93.7254901961%, 80.7058823529%);
+}
+
+.text-accent-dark-6 {
+  color: rgb(97.8407843137%, 83.8078431373%, 51.4541176471%);
+}
+
+.text-accent-light-7 {
+  color: rgb(99.5294117647%, 95.2941176471%, 85.5294117647%);
+}
+
+.text-accent-dark-7 {
+  color: rgb(97.7423529412%, 83.7235294118%, 51.4023529412%);
+}
+
+.text-accent-light-8 {
+  color: rgb(99.6862745098%, 96.862745098%, 90.3529411765%);
+}
+
+.text-accent-dark-8 {
+  color: rgb(97.6439215686%, 83.6392156863%, 51.3505882353%);
+}
+
+.text-accent-light-9 {
+  color: rgb(99.8431372549%, 98.431372549%, 95.1764705882%);
+}
+
+.text-accent-dark-9 {
+  color: rgb(97.5454901961%, 83.5549019608%, 51.2988235294%);
+}
