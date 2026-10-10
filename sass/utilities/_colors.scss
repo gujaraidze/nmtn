@@ -1,4 +1,6 @@
 @use '../abstracts/variables'as *;
+@use "sass:color";
+
 
 @each $key, $val in $colors {
     .text-#{$key} {
@@ -14,11 +16,11 @@
     @if ($val != black and $val != white){
         @for $i from 1 through 9 {
             .text-#{$key}-light-#{$i} {
-                color: mix(white, $val, $i * 10);
+                color: color.mix(white, $val, $weight: $i * 10%);
             }
 
             .text-#{$key}-dark-#{$i} {
-                color: mix(black, $val, $i * 0.1);
+                color: color.mix(black, $val, $weight: $i * 10%);
             }
 
         }
