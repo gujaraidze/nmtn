@@ -871,16 +871,6 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
 }
 
-.site-header__nav a:hover,
-.site-header__nav a:focus-visible {
-  color: #FBD784;
-}
-
-.site-header__nav a:focus-visible {
-  outline: 2px solid #FBD784;
-  outline-offset: 4px;
-}
-
 .hero__socials {
   writing-mode: vertical-lr;
 }
@@ -910,11 +900,6 @@ h1, h2, h3, h4, h5, h6 {
 .hero__scroll img {
   width: 1.2rem;
   height: 1.2rem;
-}
-
-.hero__scroll:hover,
-.hero__scroll:focus-visible {
-  color: #FBD784;
 }
 
 .hero__progress > div {
@@ -1211,6 +1196,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .mb-6 {
   margin-bottom: 12rem;
+}
+
+.link-interactive:hover, .link-interactive:focus-visible {
+  color: #FBD784;
+}
+.link-interactive:focus-visible {
+  outline: 2px solid #FBD784;
+  outline-offset: 4px;
 }
 
 .text-primary {

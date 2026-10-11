@@ -159,3 +159,17 @@ $utilities: (
         }
     }
 }
+
+
+//link hover and focus
+.link-interactive {
+  &:hover,
+  &:focus-visible {
+    color: $accent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 4px;
+  }
+}
