@@ -1,0 +1,66 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:map';
+
+
+
+// hero socials
+.hero__socials{
+    writing-mode: vertical-lr;
+}
+
+
+// hero content
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  letter-spacing: 4px;
+
+  &::before {
+    content: "";
+    width: 4.5rem;
+    height: 2px;
+    flex: 0 0 auto;
+    background-color: $accent;
+  }
+}
+
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.75rem;
+  color: $white;
+}
+
+.hero__scroll img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.hero__scroll:hover,
+.hero__scroll:focus-visible {
+  color: $accent;
+}
+
+
+//progres section
+.hero__progress > div{
+    display: flex;
+    flex-direction: column
+}
+
+
+.act-page-indicator {
+  width: 3px;
+  height: 4rem;
+  background-color: rgba($white, 0.5);
+}
+
+.act-page-indicator.active-page {
+  background-color: $white;
+  width: 3px;
+}

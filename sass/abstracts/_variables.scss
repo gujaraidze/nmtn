@@ -16,7 +16,7 @@ $base-margin: 0.75rem;
 
 
 //font sizes and weights
-$font-sizes: (
+$font-sizes: (  
   "xs": 0.75rem,    // 12px
   "sm": 0.875rem,   // 14px
   "base": 1rem,     // 16px
@@ -38,18 +38,15 @@ $font-weights: (
   "extrabold": 800
 );
 
-$font-body: 'Wix Madefor Text', sans-serif;
-$font-heading: 'Lustria', serif;
 
 
 //brakepoints
 $breakpoints: (
-    "xs": 0,
-    "sm": 480PX,
-    "md": 720PX,
-    "lg": 960PX,
-    "xl": 1200PX,
-    "xxl": 1600PX,
+    "xs": 480px,
+    "sm": 720px,
+    "md": 960px,
+    "lg": 1200px,
+    "xl": 1600px,
 );
 
 // column number

@@ -10,41 +10,66 @@
     <header style="min-height: 1900px; background-image: url('rec/img/header-bg.jpg'); background-repeat: no-repeat; background-size: cover;
                     background-position: center;">
         <div class="container pt-4">
-            <div class="row">
-                <a class="text-white col-1-md " href="#">MNTN</a>
-                <nav class="col-10-md">
-                    <ul class="row justify-center gap-6 ">
-                        <li class="text-white" ><a href="">Equipment</a></li>
-                        <li class="text-white" ><a href="">About us</a></li>
-                        <li class="text-white" ><a href="">Blog</a></li>
+            <!-- navigation -->
+            <div class="row site-header__bar ">
+                <a class="site-header__brand text-white col-6 col-3-sm" href="#"><img src="rec/icons/Logo.svg" alt="MNTN logo"></a>
+                <nav class="site-header__menu col-12 col-6-sm">
+                    <ul class="row site-header__nav  justify-center col-gap-6 ">
+                        <li class="text-white fs-lg" ><a href="">Equipment</a></li>
+                        <li class="text-white fs-lg" ><a href="">About us</a></li>
+                        <li class="text-white fs-lg" ><a href="">Blog</a></li>
                     </ul>
                 </nav>
-                <a class="text-white col-1-md flex justify-end" href="#">Account</a>
+
+                <div class="site-header__account row col-6 col-3-sm  col-gap-1 flex align-center justify-end ">
+                    <a class="site-header__icon" href="#"><img src="rec/icons/account.svg" alt="account icon"></a>
+                    <a class="site-header__text text-white fs-lg" href="#">Account</a>
+                </div>
+               
             </div>
 
-            <div class="row pt-6">
-                <div class="col-1-md">
-                    <a class="text-white" href="#">Follow us</a>
-                    <a class="text-white" href="#">instagram</a>
-                    <a class="text-white" href="#">tweeter</a>
+            <!-- hero section -->
+            <section class="hero row pt-6">
+
+                <!-- socials section -->
+                <div class="hero__socials col-3-md flex col-gap-5 pt-2">
+                    <a class="text-white fs-lg" href="#">Follow us</a>
+                    <a class="text-white" href="#"><img src="rec/icons/instagram.svg" alt="insagram"></a>
+                    <a class="text-white" href="#"><img src="rec/icons/twitter.svg" alt="tweeter"></a>
                 </div>
-                <div class=" col-10-md gap-1 justify-center">
-                    <p class="text-accent">A Hiking guide</p>
-                    <h1 class="text-white fs-7xl">Be prepared for the Mountains and beyond!</h1>
-                    <button class="text-white">scroll down</button>
+
+                <!-- hero contens section -->
+                <div class="hero__content col-6-md flex-col row-gap-7">
+                    <p class="hero__eyebrow text-accent fs-lg">A Hiking guide</p>
+                    <h1 class="hero__title text-white fs-6xl">Be prepared for the Mountains and beyond!</h1>
+                    <button class="hero__scroll text-white fs-lg">scroll down <img class="hero__scroll-icon" src="rec/icons/arrow_downward_24px.svg" alt="errow down"></button>
                 </div>
-                <div class="col-1-md flex justify-end">
-                    <p class="text-white" >start</p>
-                    <p class="text-white" >01</p>
-                    <p class="text-white" >02</p>
-                    <p class="text-white" >03</p>
+
+                <!-- hero prograss section -->
+                <div class="hero__progress col-3-md flex justify-end col-gap-5">
+                    <div class="prograss-number row-gap-7 align-end pt-1">
+                        <a href="hero" class="text-white fs-xl" >Start</a>
+                        <a href="section-1" class="text-white fs-lg" >01</a>
+                        <a href="section-2" class="text-white fs-lg" >02</a>
+                        <a href="section-3" class="text-white fs-lg" >03</a>
+                    </div>
+                    <div class="progress-indicator">
+                        <span class="act-page-indicator active-page "></span>
+                        <span class="act-page-indicator"></span>
+                        <span class="act-page-indicator"></span>
+                        <span class="act-page-indicator"></span>
+                    </div>
+                    
+
                 </div>
-            </div>
+            </section>
         </div>
     </header>
 
 
-    <main></main>
+    <main>
+        <section></section>
+    </main>
 
 
     <footer></footer>
