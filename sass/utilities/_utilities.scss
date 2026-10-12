@@ -162,14 +162,48 @@ $utilities: (
 
 
 //link hover and focus
-.link-interactive {
-  &:hover,
-  &:focus-visible {
-    color: $accent;
-  }
+// .link-interactive {
+//   &:hover,
+//   &:focus-visible {
+//     color: $accent;
+//   }
 
-  &:focus-visible {
-    outline: 2px solid $accent;
-    outline-offset: 4px;
+//   &:focus-visible {
+//     outline: 2px solid $accent;
+//     outline-offset: 4px;
+//   }
+// }
+
+
+$color-alpha: $white; // white
+$color-beta: $accent;  // accent
+
+
+
+// 2. Create the conditional mixin
+@mixin toggle-hover($current-color) {
+    transition: color 0.3s ease, fill 0.3s ease;
+    color: $current-color;
+
+  &:hover {
+    @if $current-color == $color-alpha {
+      color: $color-beta;
+      fill: $color-beta;
+    } @else {
+      color: $color-alpha;
+      fill: $color-alpha;
+    }
   }
 }
+
+
+.link-type-one {
+  @include toggle-hover($color-alpha); // Starts white, hovers to accent
+}
+
+.link-type-two {
+  @include toggle-hover($color-beta);  // Starts accent, hovers to white
+}
+
+
+

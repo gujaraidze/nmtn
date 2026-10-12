@@ -8,7 +8,40 @@
 .hero__socials{
     writing-mode: vertical-lr;
 }
+    
+.hero__socials-link-1{
+  display: inline;
+  transition: color 0.3s ease;
+  svg path {
+              fill: $white; 
+              transition: fill 0.3s ease;
+            }
+    
 
+              &:hover {
+                color:$accent;
+                svg path{
+                    fill: $accent;
+                }
+            }
+}
+
+.hero__socials-link-2{
+  display: inline;
+  transition: color 0.3s ease;
+  svg path {
+              fill: $white; 
+              transition: fill 0.3s ease;
+            }
+    
+
+              &:hover {
+                color:$accent;
+                svg path{
+                    fill: $accent;
+                }
+            }
+}
 
 // hero content
 
@@ -24,8 +57,10 @@
     height: 2px;
     flex: 0 0 auto;
     background-color: $accent;
+
   }
 }
+
 
 
 .hero__scroll {
@@ -34,17 +69,46 @@
   align-self: flex-start;
   gap: 0.75rem;
   color: $white;
-}
+  transition: color 0.3s ease;
+            
+            svg path {
+                fill:  $white; 
+                transition: fill 0.3s ease;
+            }
 
-.hero__scroll img {
-  width: 1.2rem;
-  height: 1.2rem;
-}
+            &:hover {
+                color: $accent;
+                svg path{
+                    fill: $accent;
+                }
+                svg {
+                   animation: bounce 1.5s ease infinite;
+                }
+            }
+        }
 
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(-4px); 
+  }
+  50% { 
+    transform: translateY(4px); 
+  }
+}
 
 
 
 //progres section
+
+.hero__progress{
+  position: fixed;
+  top: 50%;
+  right: 5rem;
+  transform: translateY(-70%);
+  z-index: 100;
+}
+
 .hero__progress > div{
     display: flex;
     flex-direction: column
