@@ -14,10 +14,63 @@
             <!-- navigation -->
             <div class="row site-header__bar">
 
-                <!-- logo -->
-                <div class="site-header__brand col-6 col-3-sm"><a  href=""><img src="rec/icons/Logo.svg" alt="MNTN logo"></a></div>
-                
-                <!-- navbar -->
+
+            <div class="site-header__brand-group col-6 col-3-sm" >
+                <!-- hamburger bar -->
+                <nav role="navigation">
+                    <div id="menuToggle">
+                        <!--
+                        A fake / hidden checkbox is used as click reciever,
+                        so you can use the :checked selector on it.
+                        -->
+                        <input type="checkbox" id="menuCheckbox" />
+                        
+                        <!--
+                        Some spans to act as a hamburger.
+                        
+                        They are acting like a real hamburger,
+                        not that McDonalds stuff.
+                        -->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        
+                        <!--
+                        Too bad the menu has to be inside of the button
+                        but hey, it's pure CSS magic.
+                        -->
+                        <ul id="menu">
+                        <!-- 
+                        We can use a label here to close upon click (when doing same page navigation), this
+                        does require a slight bit of JS.
+                        -->
+                        <li>
+                            <a href="#">
+                            <label for="menuCheckbox" onclick="this.parentNode.click();">Equipment</label>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about">
+                            <label for="menuCheckbox" onclick="this.parentNode.click();">About us</label>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#about">
+                            <label for="menuCheckbox" onclick="this.parentNode.click();">Blog</label>
+                            </a>
+                        </li>
+        
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- ----logo---- -->
+                <div class="site-header__brand"><a  href="">
+                    <img src="rec/icons/Logo.svg" alt="MNTN logo"></a>
+                </div>
+            </div>
+                <!-- ----navbar---- -->
                 <nav class="site-header__menu col-12 col-6-sm">
                     <ul class="row site-header__nav  justify-center col-gap-6 ">
                         <li class="link-type-one text-white fs-lg" ><a href="">Equipment</a></li>
@@ -26,7 +79,7 @@
                     </ul>
                 </nav>
 
-                <!-- account btn -->
+                <!-- ----account btn---- -->
                 <div class="flex justify-end col-6 col-3-sm">
                     <span class="site-header__account row col-gap-1 align-center" >
                     <a class="site-header__icon" href="#">
@@ -43,10 +96,10 @@
                 </div>
             </div>
 
-            <!-- hero section -->
+            <!-- ----hero section---- -->
             <section class="hero row">
 
-                <!-- socials section -->
+                <!-- ----socials section---- -->
                 <div class="hero__socials col-3-md flex col-gap-5">
                     <span>
                         <a class="link-type-one text-white fs-lg" href="#">Follow us</a>
@@ -67,7 +120,7 @@
                     </span>
                 </div>
 
-                <!-- hero contens section -->
+                <!-- ----hero contens section---- -->
                 <div class="hero__content col-6-md flex-col row-gap-7">
                     <p class="hero__eyebrow text-accent fs-lg">A HIKING GUIDE</p>
                     <h1 class="hero__title text-white fs-6xl">Be prepared for the Mountains and beyond!</h1>
@@ -78,7 +131,7 @@
                     </button>
                 </div>
 
-                <!-- hero prograss section -->
+                <!-- ----hero prograss section---- -->
                 <div class="hero__progress col-3-md flex justify-end col-gap-5">
                     <div class="prograss-number row-gap-7 align-end">
                         <button data-target="hero" aria-label="hero" class="spd-btn link-type-one text-white fs-xl" ><span class="spd-label">Start</span></button>
@@ -98,8 +151,10 @@
         </div>
     </header>
 
-<!-- main section -->
+<!-- ----main section---- -->
     <main class="main">
+
+        <!-- ----section 01---- -->
             <section class="card spd-section" id="s1" data-scroll>
                 <div class="card__content">
                     <div class="card__info">
@@ -116,6 +171,7 @@
                 <div class="card__img"><img src="rec/img/01.jpg" alt=""></div>
             </section>
 
+        <!-- ----section 02---- -->
             <section class="card spd-section" id="s2" data-scroll>
                 <div class="card__content">
                     <div class="card__info">
@@ -132,7 +188,8 @@
                 </div>
                 <div class="card__img"><img src="rec/img/02.jpg" alt=""></div>
             </section>
-
+            
+        <!-- ----section 03---- -->
             <section class="card spd-section" id="s3" data-scroll>
                 <div class="card__content">
                     <div class="card__info">
@@ -151,7 +208,7 @@
         </div>
     </main>
 
-
+    <!-- -----footer----- -->
     <footer class="footer">
         <div class="footer__logo-section">
             <span class="footer__logo-top"> 
