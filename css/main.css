@@ -872,6 +872,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 64px;
 }
 
+.site-header__brand a {
+  display: inline-block;
+}
+
 .site-header__menu {
   display: none;
 }
@@ -1106,9 +1110,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 280px;
   margin: 0 auto;
   margin-bottom: 190px;
-  margin-top: 130px;
   box-sizing: border-box;
-  align-items: start;
 }
 
 .footer__logo-section {
