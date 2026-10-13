@@ -1,5 +1,8 @@
 var dots = document.querySelectorAll('.spd-btn');
 var indicators = document.querySelectorAll('.act-page-indicator');
+const scrolDown = document.getElementsByClassName('.hero__scroll');
+
+
 
 function setActive(id) {
   dots.forEach(function (dot, index) {
@@ -29,6 +32,7 @@ ScrollOut({
   }
 });
 
+
 // Click a dot to navigate to a section
 dots.forEach(function (dot) {
   dot.addEventListener('click', function () {
@@ -42,6 +46,18 @@ dots.forEach(function (dot) {
     }
   });
 });
+
+
+const scrollDown = document.querySelector('.hero__scroll');
+
+scrollDown.addEventListener('click', function () {
+  document.getElementById('s1').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+});
+
+
 
 // Initial state
 setActive('hero');

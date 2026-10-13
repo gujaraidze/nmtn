@@ -2,8 +2,10 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
 
+
 .site-header__bar{
     align-items: center;
+    padding-top: 64px;
 }
 
 
@@ -14,25 +16,16 @@
 
 
 // navbar component 
-// .site-header__nav a:hover,
-// .site-header__nav a:focus-visible {
-//   color: $accent;
-// }
-
-// .site-header__nav a:focus-visible {
-//   outline: 2px solid $accent;
-//   outline-offset: 4px;
-// }
 
 
-// header menu
-// .site-header__menu{
-//     display: none;
+//header menu
+.site-header__menu{
+    display: none;
    
-//     @include sm {
-//     display: block;
-//   }
-// }
+    @include sm {
+    display: block;
+  }
+}
 
 
 

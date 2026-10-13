@@ -2,11 +2,16 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
 
+//hero section
+.hero {
+  padding-top: 198px;
+}
 
 
 // hero socials
 .hero__socials{
     writing-mode: vertical-lr;
+    padding-top: 72px;
 }
     
 .hero__socials-link-1{

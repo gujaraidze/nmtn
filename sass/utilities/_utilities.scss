@@ -2,163 +2,113 @@
 @use '../abstracts/variables'as *;
 @use 'sass:map';
 
-$utilities: (
-    "padding": (
-        "prefix": "p",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-            "6": $base-padding * 16
-            )
-        ),
-    
-        "padding-left": (
-            "prefix": "pl",
-            "values": (
-                "0": 0,
-                "1": $base-padding,
-                "2": $base-padding * 2,
-                "3": $base-padding * 4,
-                "4": $base-padding * 6,
-                "5": $base-padding * 8,
-                "6": $base-padding * 16
-                )
-            ),
 
-        "padding-right": (
-            "prefix": "pr",
-            "values": (
-                "0": 0,
-                "1": $base-padding,
-                "2": $base-padding * 2,
-                "3": $base-padding * 4,
-                "4": $base-padding * 6,
-                "5": $base-padding * 8,
-                "6": $base-padding * 16
-                )
-            ),
+// Generate the spacing scale automatically.
 
-        "padding-top": (
-            "prefix": "pt",
-            "values": (
-                "0": 0,
-                "1": $base-padding,
-                "2": $base-padding * 2,
-                "3": $base-padding * 4,
-                "4": $base-padding * 6,
-                "5": $base-padding * 8,
-                "6": $base-padding * 16
-                )
-            ),
-
-        "padding-bottom": (
-            "prefix": "pb",
-            "values": (
-                "0": 0,
-                "1": $base-padding,
-                "2": $base-padding * 2,
-                "3": $base-padding * 4,
-                "4": $base-padding * 6,
-                "5": $base-padding * 8,
-                "6": $base-padding * 16
-                )
-            ),
+$base-spacing: 0.5rem;
+$spacing-steps: 20;
 
 
-    //margins
+// Automatically generate spacing values.
+$spacing-values: ();
 
-    "margin": (
-        "prefix": "m",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-            "6": $base-margin * 16
-            )
-        ),
-    
-        "margin-left": (
-            "prefix": "ml",
-            "values": (
-                "0": 0,
-                "1": $base-margin,
-                "2": $base-margin * 2,
-                "3": $base-margin * 4,
-                "4": $base-margin * 6,
-                "5": $base-margin * 8,
-                "6": $base-margin * 16
-                )
-            ),
+@for $i from 0 through $spacing-steps {
+  $spacing-values: map.merge(
+    $spacing-values,
+    ($i: $base-spacing * $i)
+  );
+}
 
-        "margin-right": (
-            "prefix": "mr",
-            "values": (
-                "0": 0,
-                "1": $base-margin,
-                "2": $base-margin * 2,
-                "3": $base-margin * 4,
-                "4": $base-margin * 6,
-                "5": $base-margin * 8,
-                "6": $base-margin * 16
-                )
-            ),
 
-        "margin-top": (
-            "prefix": "mt",
-            "values": (
-                "0": 0,
-                "1": $base-margin,
-                "2": $base-margin * 2,
-                "3": $base-margin * 4,
-                "4": $base-margin * 6,
-                "5": $base-margin * 8,
-                "6": $base-margin * 16
-                )
-            ),
 
-        "margin-bottom": (
-            "prefix": "mb",
-            "values": (
-                "0": 0,
-                "1": $base-margin,
-                "2": $base-margin * 2,
-                "3": $base-margin * 4,
-                "4": $base-margin * 6,
-                "5": $base-margin * 8,
-                "6": $base-margin * 16
-                )
-            ),
+$spacing-utilities: (
+  // Padding
+  "padding": (
+    "prefix": "p",
+    "properties": (padding)
+  ),
+  "padding-left": (
+    "prefix": "pl",
+    "properties": (padding-left)
+  ),
+  "padding-right": (
+    "prefix": "pr",
+    "properties": (padding-right)
+  ),
+  "padding-top": (
+    "prefix": "pt",
+    "properties": (padding-top)
+  ),
+  "padding-bottom": (
+    "prefix": "pb",
+    "properties": (padding-bottom)
+  ),
 
-        
+  // Horizontal and vertical padding
+  "padding-x": (
+    "prefix": "px",
+    "properties": (padding-left, padding-right)
+  ),
+  "padding-y": (
+    "prefix": "py",
+    "properties": (padding-top, padding-bottom)
+  ),
 
-        
+  // Margin
+  "margin": (
+    "prefix": "m",
+    "properties": (margin)
+  ),
+  "margin-left": (
+    "prefix": "ml",
+    "properties": (margin-left)
+  ),
+  "margin-right": (
+    "prefix": "mr",
+    "properties": (margin-right)
+  ),
+  "margin-top": (
+    "prefix": "mt",
+    "properties": (margin-top)
+  ),
+  "margin-bottom": (
+    "prefix": "mb",
+    "properties": (margin-bottom)
+  ),
+
+  // Horizontal and vertical margin
+  "margin-x": (
+    "prefix": "mx",
+    "properties": (margin-left, margin-right)
+  ),
+  "margin-y": (
+    "prefix": "my",
+    "properties": (margin-top, margin-bottom)
+  )
 );
 
 
+// Generate all utility classes.
+@each $name, $config in $spacing-utilities {
+  $prefix: map.get($config, "prefix");
+  $properties: map.get($config, "properties");
 
-@each $property, $map in $utilities {
-    $prefix: map.get($map, "prefix");
-    $values: map.get($map, "values");
-
-    @each $k, $v in $values {
-        @if($k == "default") {
-            .#{$prefix} {
-                #{$property}: $v;
-            }
-        }@else {
-            .#{$prefix}-#{$k} {
-                #{$property}: $v;
-            }
-        }
+  @each $key, $value in $spacing-values {
+    .#{$prefix}-#{$key} {
+      @each $property in $properties {
+        #{$property}: $value;
+      }
     }
+  }
 }
+
+
+
+
+
+
+
+
 
 
 //link hover and focus

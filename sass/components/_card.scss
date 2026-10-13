@@ -3,7 +3,7 @@
 
 .main {
     position: relative;
-    top: -45vh;
+    margin-top: -60vh;
     counter-reset: section;
     & > .card:nth-child(even){
         flex-direction: row-reverse;
@@ -38,7 +38,7 @@
         .card__content{
             flex: 1;
 
-            padding-right: 150px;
+            padding-right: 130px;
             padding-left: 150px;
             position: relative;
 
@@ -58,6 +58,9 @@
             flex-direction: column;
             row-gap: 27px;
             justify-content: start;
+            h1{
+                font-weight: normal;
+            }
         }
 
 
@@ -75,6 +78,13 @@
                 flex: 0 0 auto;
                 background-color: $accent;
 
+            }
+        }
+
+
+        .card__img{
+            img {
+                filter: blur(0.5px);
             }
         }
 

@@ -25,7 +25,21 @@
 
         }
     }
+
+
+    //text opacity 
+
+    @for $i from 1 through 9 {
+    .text-#{$key}-opc-#{$i} {
+        color: $val;
+        opacity: $i * 10%;
+    }
 }
+
+}
+
+
+
 
 
 
