@@ -1,11 +1,16 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use "sass:map";
 
 
 .main {
     position: relative;
     margin-top: -60vh;
     counter-reset: section;
-    & > .card:nth-child(even){
+
+
+    @include lg {
+        & > .card:nth-child(even){
         flex-direction: row-reverse;
         
         .card__content{
@@ -13,11 +18,12 @@
             padding-right: 0px;
 
             &::before {
-            left: 110px;
-            top: -190px;
-        }
+                left: 110px;
+                top: -190px;
+                }
+            }   
+        }   
     }
-}
 
 
     .card{
@@ -28,14 +34,52 @@
         min-height: 100vh;
         margin: 0 auto;
         padding: 20px;
-        padding-top: 100px;
-        padding-bottom: 70px;
+        padding-top: 86px;
+        padding-bottom: 40px;
         box-sizing: border-box;
         align-items: center;
+        justify-content: center;
         counter-increment: section;
-        
+
+
+            
+        @include lg {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+            max-width: 1462px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 100px;
+            padding-bottom: 70px;
+            box-sizing: border-box;
+            align-items: center;
+            counter-increment: section;
+        }
+
+
 
         .card__content{
+
+
+
+            padding-right: 20px;
+            padding-left: 20px;
+            position: relative;
+
+            &::before {
+            content: counter(section, decimal-leading-zero); // 01, 02, 03...
+            position: absolute;
+            font-size: 150px;
+            color: rgb(255, 255, 255);
+            opacity: 15%;
+            left: 210px;
+            top: -70px;
+        }
+
+            
+        @include lg {
             flex: 1;
 
             padding-right: 130px;
@@ -51,6 +95,10 @@
             left: -23px;
             top: -190px;
         }
+
+        }
+
+
         }
 
         .card__info{
@@ -61,30 +109,105 @@
             h1{
                 font-weight: normal;
             }
+            
+            @include sm {
+                
+                
+            }
+
+            @include md {
+                padding-inline: 50px;
+    
+            }
+            @include lg {
+            
+            }
+
         }
 
 
 
         .card__eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        letter-spacing: 4px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: 4px;
+            font-size: map.get($map: $font-sizes, $key: "xs");
 
-            &::before {
-                content: "";
-                width: 4.5rem;
-                height: 2px;
-                flex: 0 0 auto;
-                background-color: $accent;
+                &::before {
+                    content: "";
+                    width: 2.5rem;
+                    height: 2px;
+                    flex: 0 0 auto;
+                    background-color: $accent;
 
+
+                    @include sm {
+                        width: 4.5rem;
+                        height: 2px;
+                        gap: 1.5rem;
+                    }
+                }
+
+            //respomsive
+            @include sm {
+                font-size: map.get($map: $font-sizes, $key: "sm");
+                
+            }
+
+            @include md {
+                font-size: map.get($map: $font-sizes, $key: "base");
+                
+            }
+            @include lg {
+                font-size: map.get($map: $font-sizes, $key: "lg");
             }
         }
 
 
+        .card__title{
+
+            font-size: map.get($map: $font-sizes, $key: "3xl");
+
+            //respomsive
+            @include sm {
+                font-size: map.get($map: $font-sizes, $key: "4xl");
+            }
+
+            @include lg {
+                font-size: map.get($map: $font-sizes, $key: "4xl");
+            }
+        }
+
+
+        .card__text{
+            font-size: map.get($map: $font-sizes, $key: "xs");
+
+            //respomsive
+            @include sm {
+                font-size: map.get($map: $font-sizes, $key: "sm");
+            }
+
+            @include lg {
+                font-size: map.get($map: $font-sizes, $key: "base");
+            }
+        }
+
         .card__img{
             img {
-                filter: blur(0.5px);
+                filter: blur(0.5px); 
+                width: 100%;
+            }
+
+            @include lg {
+                width: 35%;
+                flex: 0 0 35%;
+            }
+            
+
+            @include xl {
+                width: 40%;
+                flex-basis: 40%;
             }
         }
 
@@ -96,7 +219,9 @@
             gap: 0.75rem;
             color: $accent;
             transition: color 0.3s ease;
-            
+            font-size: map.get($map: $font-sizes, $key: "xs");
+
+        
             
             svg{
                 transition: transform 0.3s ease;
@@ -116,8 +241,19 @@
                     transform:translateX(40%);       
                 }
             }
+
+            //respomsive
+            @include sm {
+                font-size: map.get($map: $font-sizes, $key: "sm");
+            }
+            
+            @include md {
+                font-size: map.get($map: $font-sizes, $key: "base");
+            }
+
+            @include lg {
+                font-size: map.get($map: $font-sizes, $key: "lg");
+            }
         }
-    }
+    }        
 }
-
-
