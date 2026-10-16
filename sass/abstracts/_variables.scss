@@ -26,7 +26,7 @@ $font-sizes: (
   "4xl": 2.25rem,   // 36px
   "5xl": 3rem,      // 48px
   "6xl": 4rem,      // 64px
-  "7xl": 5.5rem       // 88px
+  "7xl": 5.5rem     // 88px
 );
 
 $font-weights: (
@@ -43,7 +43,7 @@ $font-weights: (
 $breakpoints: (
     "xs": 480px,
     "sm": 720px,
-    "md": 960px,
+    "md": 1040px,
     "lg": 1200px,
     "xl": 1600px,
 );
@@ -60,7 +60,7 @@ $grid-gaps: (
     "4": 20px,
     "5": 24px,
     "6": 32px,
-    "7": 40px
+    "7": 36px
 );
 
 //list of layout values 

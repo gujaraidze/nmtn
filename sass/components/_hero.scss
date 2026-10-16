@@ -2,9 +2,23 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:map';
 
+
+$nav-row-height: 10vh; 
+$hero-padding: 20vh;
+
 //hero section
 .hero {
-  padding-top: 198px;
+  padding-top:$hero-padding;
+
+  //respomsive
+@include sm {
+    
+  }
+
+  @include md{
+    
+  }
+
 }
 
 
@@ -12,8 +26,59 @@
 .hero__socials{
     writing-mode: vertical-lr;
     padding-top: 72px;
+    display: none;
+
+
+    //respomsive
+
+
+    @include md {
+      display: inline-flex;
+    }
+
+
+
+}
+
+
+.hero__title{
+  font-size: map.get($map: $font-sizes, $key: "4xl");
+
+  //respomsive
+
+  @include sm {
+    
+  }
+
+  @include md {
+    font-size: map.get($map: $font-sizes, $key: "5xl");
+  }
+  @include lg {
+    font-size: map.get($map: $font-sizes, $key: "6xl");
+  }
+
+
+}
+
+.hero__content{
+  row-gap: map.get($map: $grid-gaps, $key: "5");
+
+  //respomsive
+
+
+  @include sm {
+    row-gap: map.get($map: $grid-gaps, $key: "7");
+    margin-left: clamp(20px, 4.167vw, 80px);
+  }
+
+  @include md {
+    row-gap: map.get($map: $grid-gaps, $key: "7");
+    margin-left: 0;
+  }
+
 }
     
+
 .hero__socials-link-1{
   display: inline;
   transition: color 0.3s ease;
@@ -53,17 +118,38 @@
 .hero__eyebrow {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   letter-spacing: 4px;
 
   &::before {
     content: "";
-    width: 4.5rem;
+    width: 2.5rem;
     height: 2px;
     flex: 0 0 auto;
     background-color: $accent;
 
+
+    @include sm {
+      width: 4.5rem;
+      height: 2px;
+      gap: 1.5rem;
+    }
   }
+
+  
+  font-size: map.get($map: $font-sizes, $key: "sm");
+
+  //respomsive
+
+
+  @include sm {
+    font-size: map.get($map: $font-sizes, $key: "base");
+  }
+
+  @include md{
+    font-size: map.get($map: $font-sizes, $key: "lg");
+  }
+
 }
 
 
@@ -90,7 +176,20 @@
                    animation: bounce 1.5s ease infinite;
                 }
             }
-        }
+
+
+    font-size: map.get($map: $font-sizes, $key: "lg");
+
+
+    //respomsive
+
+
+    @include sm {
+      font-size: map.get($map: $font-sizes, $key: "xl");
+    }
+
+    
+  }
 
 
 @keyframes bounce {
@@ -108,10 +207,23 @@
 
 .hero__progress{
   position: fixed;
-  top: 50%;
-  right: 5rem;
-  transform: translateY(-70%);
+  top: $nav-row-height + $hero-padding;
+  right: max(20px, calc((100vw - 1720px) / 2));
   z-index: 100;
+
+  display: none;
+
+  //respomsive
+
+
+  @include md {
+    display: inline-flex;
+  }
+
+}
+
+.prograss-number {
+  padding-top: 14px;
 }
 
 .hero__progress > div{
