@@ -3,8 +3,8 @@
 @use 'sass:map';
 
 
-$nav-row-height: 10vh; 
-$hero-padding: 20vh;
+//$nav-row-height: 10vh; 
+$hero-padding: 25vh;
 
 //hero section
 .hero {
@@ -207,7 +207,7 @@ $hero-padding: 20vh;
 
 .hero__progress{
   position: fixed;
-  top: $nav-row-height + $hero-padding;
+  top: $hero-padding; // + $nav-row-height
   right: max(20px, calc((100vw - 1720px) / 2));
   z-index: 100;
 

@@ -1,25 +1,35 @@
 @use '../abstracts/variables' as *;
-
+@use '../abstracts/mixins' as *;
 
 .footer {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     width: 100%;
-    max-width: 1462px;
     min-height: 280px;
-    margin: 0 auto;
-    margin-bottom: 190px;
+    padding-inline: 20px;
+    padding-top: 150px;
+    padding-bottom: 50px;
     box-sizing: border-box;
+    row-gap: 40px;
 
+
+    @include md{
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        max-width: 1462px;
+        min-height: 280px;
+        margin: 0 auto;
+        margin-bottom: 1px;
+        box-sizing: border-box;
+    }
 }
 
 .footer__logo-section {
     display: flex;
     flex-direction: column;
-    min-height: 280px;
-    flex: 5;
     justify-content: space-between;
-    
+    row-gap: 24px;
     .footer__logo-top{
         display: flex;
         flex-direction: column;
@@ -30,14 +40,40 @@
         max-width: 300px;
     }
 
+    @include md{
+        display: flex;
+        flex-direction: column;
+        min-height: 280px;
+        flex: 2;
+        justify-content: space-between;
+        
+        .footer__logo-top{
+            display: flex;
+            flex-direction: column;
+            row-gap: 24px;
+        }
+
+        .footer__quote{
+            max-width: 300px;
+        }
+    }
+
+    @include xl {
+        flex: 5;
+    }
+    
+
 }
 
 .footer__blog {
     display: flex;
     flex-direction: column;
-    flex: 2;
+    flex: 1;
     row-gap: 24px;
     a{font-weight: normal;}
+    @include xl{
+        flex: 2;
+    }
 }
 
 .footer__MNTN {

@@ -18,7 +18,7 @@
             padding-right: 0px;
 
             &::before {
-                left: 110px;
+                left: 80px;
                 top: -190px;
                 }
             }   
@@ -61,11 +61,6 @@
 
 
         .card__content{
-
-
-
-            padding-right: 20px;
-            padding-left: 20px;
             position: relative;
 
             &::before {
@@ -74,7 +69,7 @@
             font-size: 150px;
             color: rgb(255, 255, 255);
             opacity: 15%;
-            left: 210px;
+            left: 150px;
             top: -70px;
         }
 
@@ -82,8 +77,8 @@
         @include lg {
             flex: 1;
 
-            padding-right: 130px;
-            padding-left: 150px;
+            padding-right: 60px;
+            padding-left: 120px;
             position: relative;
 
             &::before {
@@ -92,7 +87,7 @@
             font-size: 240px;
             color: rgb(247, 247, 247);
             opacity: 10%;
-            left: -23px;
+            left: -52px;
             top: -190px;
         }
 
@@ -104,23 +99,21 @@
         .card__info{
             display: flex;
             flex-direction: column;
-            row-gap: 27px;
+            row-gap: 10px;
             justify-content: start;
+            padding-bottom: 20px;
+
             h1{
                 font-weight: normal;
             }
             
-            @include sm {
-                
-                
-            }
 
             @include md {
                 padding-inline: 50px;
-    
+                row-gap: 27px;
             }
             @include lg {
-            
+                padding-inline: 0px;
             }
 
         }
@@ -175,28 +168,33 @@
             }
 
             @include lg {
-                font-size: map.get($map: $font-sizes, $key: "4xl");
+                font-size: map.get($map: $font-sizes, $key: "5xl");
+            }
+
+            @include xl {
+                font-size: map.get($map: $font-sizes, $key: "6xl");
             }
         }
 
 
         .card__text{
-            font-size: map.get($map: $font-sizes, $key: "xs");
+            font-size: map.get($map: $font-sizes, $key: "sm");
 
             //respomsive
             @include sm {
-                font-size: map.get($map: $font-sizes, $key: "sm");
+                font-size: map.get($map: $font-sizes, $key: "lg");
             }
 
             @include lg {
-                font-size: map.get($map: $font-sizes, $key: "base");
+                font-size: map.get($map: $font-sizes, $key: "lg");
             }
         }
 
         .card__img{
             img {
-                filter: blur(0.5px); 
                 width: 100%;
+                height: 60%;
+
             }
 
             @include lg {

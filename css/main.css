@@ -868,8 +868,19 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .site-header__bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding-top: 30px;
+  width: 100%;
+  max-width: 1760px;
+  box-sizing: border-box;
+  padding: 0 20px;
+  z-index: 1000;
+  padding-top: 20px;
 }
 @media (min-width: 720px) {
   .site-header__bar {
@@ -881,7 +892,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 150vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 30%;
+  background-position: 30% 0%;
 }
 @media (min-width: 720px) {
   .header__background {
@@ -1092,7 +1103,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero {
-  padding-top: 20vh;
+  padding-top: 25vh;
 }
 .hero__socials {
   writing-mode: vertical-lr;
@@ -1239,7 +1250,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero__progress {
   position: fixed;
-  top: 30vh;
+  top: 25vh;
   right: max(20px, (100vw - 1720px) / 2);
   z-index: 100;
   display: none;
@@ -1284,7 +1295,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 0px;
   }
   .main > .card:nth-child(even) .card__content::before {
-    left: 110px;
+    left: 80px;
     top: -190px;
   }
 }
@@ -1320,8 +1331,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .main .card .card__content {
-  padding-right: 20px;
-  padding-left: 20px;
   position: relative;
 }
 .main .card .card__content::before {
@@ -1330,14 +1339,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 150px;
   color: rgb(255, 255, 255);
   opacity: 15%;
-  left: 210px;
+  left: 150px;
   top: -70px;
 }
 @media (min-width: 1200px) {
   .main .card .card__content {
     flex: 1;
-    padding-right: 130px;
-    padding-left: 150px;
+    padding-right: 60px;
+    padding-left: 120px;
     position: relative;
   }
   .main .card .card__content::before {
@@ -1346,15 +1355,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 240px;
     color: rgb(247, 247, 247);
     opacity: 10%;
-    left: -23px;
+    left: -52px;
     top: -190px;
   }
 }
 .main .card .card__info {
   display: flex;
   flex-direction: column;
-  row-gap: 27px;
+  row-gap: 10px;
   justify-content: start;
+  padding-bottom: 20px;
 }
 .main .card .card__info h1 {
   font-weight: normal;
@@ -1362,6 +1372,12 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 1040px) {
   .main .card .card__info {
     padding-inline: 50px;
+    row-gap: 27px;
+  }
+}
+@media (min-width: 1200px) {
+  .main .card .card__info {
+    padding-inline: 0px;
   }
 }
 .main .card .card__eyebrow {
@@ -1410,25 +1426,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 1200px) {
   .main .card .card__title {
-    font-size: 2.25rem;
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1600px) {
+  .main .card .card__title {
+    font-size: 4rem;
   }
 }
 .main .card .card__text {
-  font-size: 0.81rem;
+  font-size: 0.875rem;
 }
 @media (min-width: 720px) {
   .main .card .card__text {
-    font-size: 0.875rem;
+    font-size: 1.125rem;
   }
 }
 @media (min-width: 1200px) {
   .main .card .card__text {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 }
 .main .card .card__img img {
-  filter: blur(0.5px);
   width: 100%;
+  height: 60%;
 }
 @media (min-width: 1200px) {
   .main .card .card__img {
@@ -1485,21 +1506,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   width: 100%;
-  max-width: 1462px;
   min-height: 280px;
-  margin: 0 auto;
-  margin-bottom: 190px;
+  padding-inline: 20px;
+  padding-top: 150px;
+  padding-bottom: 50px;
   box-sizing: border-box;
+  row-gap: 40px;
+}
+@media (min-width: 1040px) {
+  .footer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    max-width: 1462px;
+    min-height: 280px;
+    margin: 0 auto;
+    margin-bottom: 1px;
+    box-sizing: border-box;
+  }
 }
 
 .footer__logo-section {
   display: flex;
   flex-direction: column;
-  min-height: 280px;
-  flex: 5;
   justify-content: space-between;
+  row-gap: 24px;
 }
 .footer__logo-section .footer__logo-top {
   display: flex;
@@ -1509,15 +1542,42 @@ h1, h2, h3, h4, h5, h6 {
 .footer__logo-section .footer__quote {
   max-width: 300px;
 }
+@media (min-width: 1040px) {
+  .footer__logo-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    flex: 2;
+    justify-content: space-between;
+  }
+  .footer__logo-section .footer__logo-top {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+  .footer__logo-section .footer__quote {
+    max-width: 300px;
+  }
+}
+@media (min-width: 1600px) {
+  .footer__logo-section {
+    flex: 5;
+  }
+}
 
 .footer__blog {
   display: flex;
   flex-direction: column;
-  flex: 2;
+  flex: 1;
   row-gap: 24px;
 }
 .footer__blog a {
   font-weight: normal;
+}
+@media (min-width: 1600px) {
+  .footer__blog {
+    flex: 2;
+  }
 }
 
 .footer__MNTN {
