@@ -59,5 +59,38 @@ scrollDown.addEventListener('click', function () {
 
 
 
+const siteHeaderBar = document.querySelector('.site-header__bar');
+let lastScrollY = window.scrollY;
+let scrollTicking = false;
+
+function updateHeaderVisibility() {
+  const currentScrollY = window.scrollY;
+  const menuIsOpen = document.querySelector('#menuCheckbox')?.checked;
+  const scrollingDown = currentScrollY > lastScrollY;
+
+  if (currentScrollY <= 80 || !scrollingDown || menuIsOpen) {
+    siteHeaderBar.classList.remove('is-hidden');
+  } else {
+    siteHeaderBar.classList.add('is-hidden');
+  }
+
+  lastScrollY = currentScrollY;
+  scrollTicking = false;
+}
+
+window.addEventListener('scroll', function () {
+  if (!scrollTicking) {
+    window.requestAnimationFrame(updateHeaderVisibility);
+    scrollTicking = true;
+  }
+}, { passive: true });
+
+
+
+
+
+
+
+
 // Initial state
 setActive('hero');

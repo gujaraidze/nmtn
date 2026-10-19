@@ -5,7 +5,7 @@
 
 .main {
     position: relative;
-    margin-top: -60vh;
+    margin-top: -6dvh;
     counter-reset: section;
 
 
@@ -18,8 +18,8 @@
             padding-right: 0px;
 
             &::before {
-                left: 80px;
-                top: -190px;
+                left: 250px;
+                top: -170px;
                 }
             }   
         }   
@@ -31,7 +31,7 @@
         flex-flow: row wrap;
         width: 100%;
         max-width: 1462px;
-        min-height: 100vh;
+        min-height: 100dvh;
         margin: 0 auto;
         padding: 20px;
         padding-top: 86px;
@@ -48,7 +48,7 @@
             flex-flow: row wrap;
             width: 100%;
             max-width: 1462px;
-            min-height: 100vh;
+            min-height: 100dvh;
             margin: 0 auto;
             padding: 20px;
             padding-top: 100px;
@@ -78,17 +78,16 @@
             flex: 1;
 
             padding-right: 60px;
-            padding-left: 120px;
             position: relative;
 
             &::before {
             content: counter(section, decimal-leading-zero); // 01, 02, 03...
             position: absolute;
-            font-size: 240px;
+            font-size: 200px;
             color: rgb(247, 247, 247);
             opacity: 10%;
-            left: -52px;
-            top: -190px;
+            left: -10px;
+            top: -160px;
         }
 
         }
@@ -109,7 +108,6 @@
             
 
             @include md {
-                padding-inline: 50px;
                 row-gap: 27px;
             }
             @include lg {

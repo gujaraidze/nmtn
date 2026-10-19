@@ -1,5 +1,6 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+@use "sass:map";
 
 .footer {
     display: flex;
@@ -30,6 +31,7 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 24px;
+
     .footer__logo-top{
         display: flex;
         flex-direction: column;
@@ -38,6 +40,20 @@
 
     .footer__quote{
         max-width: 300px;
+        font-size: map.get($map: $font-sizes, $key: "sm");
+
+        @include md {
+            font-size: map.get($map: $font-sizes, $key: "lg");   
+        }
+    }
+
+
+    .footer__copyright {
+        font-size: map.get($map: $font-sizes, $key: "xs");
+
+        @include md {
+            font-size: map.get($map: $font-sizes, $key: "lg");   
+        }
     }
 
     @include md{
@@ -47,15 +63,13 @@
         flex: 2;
         justify-content: space-between;
         
+        
         .footer__logo-top{
             display: flex;
             flex-direction: column;
             row-gap: 24px;
         }
 
-        .footer__quote{
-            max-width: 300px;
-        }
     }
 
     @include xl {
@@ -69,10 +83,14 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    row-gap: 24px;
+    row-gap: 16px;
     a{font-weight: normal;}
-    @include xl{
+    font-size: map.get($map: $font-sizes, $key: "sm");   
+
+    @include md{
         flex: 2;
+        row-gap: 24px;
+        font-size: map.get($map: $font-sizes, $key: "lg");   
     }
 }
 
@@ -80,7 +98,13 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    row-gap: 24px;
+    row-gap: 16px;
     a{font-weight: normal;}
-    
+    font-size: map.get($map: $font-sizes, $key: "sm");   
+
+    @include md{
+        flex: 2;
+        row-gap: 24px;
+        font-size: map.get($map: $font-sizes, $key: "lg");   
+    }
 }

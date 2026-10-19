@@ -18,6 +18,12 @@
     z-index: 1000;
     padding-top: 20px;
 
+    transition: transform 0.3s;
+
+    &.is-hidden {
+      transform: translate(-50%, -150%);
+    }
+
         @include sm {  
           padding-top: 32px;
         }
@@ -115,6 +121,10 @@
 
   nav{
     padding-top: 3px;
+  }
+
+  @include sm {
+    gap: 0;
   }
 }
 

@@ -881,6 +881,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 20px;
   z-index: 1000;
   padding-top: 20px;
+  transition: transform 0.3s;
+}
+.site-header__bar.is-hidden {
+  transform: translate(-50%, -150%);
 }
 @media (min-width: 720px) {
   .site-header__bar {
@@ -961,6 +965,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .site-header__brand-group nav {
   padding-top: 3px;
+}
+@media (min-width: 720px) {
+  .site-header__brand-group {
+    gap: 0;
+  }
 }
 
 /*----------------------------hamburger menu--------------------------- */
@@ -1108,7 +1117,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero {
-  padding-top: 25vh;
+  padding-top: 25dvh;
 }
 .hero__socials {
   writing-mode: vertical-lr;
@@ -1255,7 +1264,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .hero__progress {
   position: fixed;
-  top: 25vh;
+  top: 25dvh;
   right: max(20px, (100vw - 1720px) / 2);
   z-index: 100;
   display: none;
@@ -1288,7 +1297,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .main {
   position: relative;
-  margin-top: -60vh;
+  margin-top: -6dvh;
   counter-reset: section;
 }
 @media (min-width: 1200px) {
@@ -1300,8 +1309,8 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 0px;
   }
   .main > .card:nth-child(even) .card__content::before {
-    left: 80px;
-    top: -190px;
+    left: 250px;
+    top: -170px;
   }
 }
 .main .card {
@@ -1309,7 +1318,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-flow: row wrap;
   width: 100%;
   max-width: 1462px;
-  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: 20px;
   padding-top: 86px;
@@ -1325,7 +1334,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-flow: row wrap;
     width: 100%;
     max-width: 1462px;
-    min-height: 100vh;
+    min-height: 100dvh;
     margin: 0 auto;
     padding: 20px;
     padding-top: 100px;
@@ -1351,17 +1360,16 @@ h1, h2, h3, h4, h5, h6 {
   .main .card .card__content {
     flex: 1;
     padding-right: 60px;
-    padding-left: 120px;
     position: relative;
   }
   .main .card .card__content::before {
     content: counter(section, decimal-leading-zero);
     position: absolute;
-    font-size: 240px;
+    font-size: 200px;
     color: rgb(247, 247, 247);
     opacity: 10%;
-    left: -52px;
-    top: -190px;
+    left: -10px;
+    top: -160px;
   }
 }
 .main .card .card__info {
@@ -1376,7 +1384,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width: 1040px) {
   .main .card .card__info {
-    padding-inline: 50px;
     row-gap: 27px;
   }
 }
@@ -1546,6 +1553,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 .footer__logo-section .footer__quote {
   max-width: 300px;
+  font-size: 0.875rem;
+}
+@media (min-width: 1040px) {
+  .footer__logo-section .footer__quote {
+    font-size: 1.125rem;
+  }
+}
+.footer__logo-section .footer__copyright {
+  font-size: 0.81rem;
+}
+@media (min-width: 1040px) {
+  .footer__logo-section .footer__copyright {
+    font-size: 1.125rem;
+  }
 }
 @media (min-width: 1040px) {
   .footer__logo-section {
@@ -1560,9 +1581,6 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     row-gap: 24px;
   }
-  .footer__logo-section .footer__quote {
-    max-width: 300px;
-  }
 }
 @media (min-width: 1600px) {
   .footer__logo-section {
@@ -1574,14 +1592,19 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   flex: 1;
-  row-gap: 24px;
+  row-gap: 16px;
 }
 .footer__blog a {
   font-weight: normal;
 }
-@media (min-width: 1600px) {
+.footer__blog {
+  font-size: 0.875rem;
+}
+@media (min-width: 1040px) {
   .footer__blog {
     flex: 2;
+    row-gap: 24px;
+    font-size: 1.125rem;
   }
 }
 
@@ -1589,10 +1612,20 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   flex: 1;
-  row-gap: 24px;
+  row-gap: 16px;
 }
 .footer__MNTN a {
   font-weight: normal;
+}
+.footer__MNTN {
+  font-size: 0.875rem;
+}
+@media (min-width: 1040px) {
+  .footer__MNTN {
+    flex: 2;
+    row-gap: 24px;
+    font-size: 1.125rem;
+  }
 }
 
 .p-0 {
